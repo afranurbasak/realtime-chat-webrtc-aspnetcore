@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>IRC WebRTC Platformu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- GİRİŞ / KAYIT EKRANI -->
+<div id="authEkrani" class="auth-kutu">
+
+    <h1>IRC WebRTC Platformu</h1>
+
+    <input id="kullaniciAdi" type="text" placeholder="Kullanıcı Adı">
+    <input id="sifre" type="password" placeholder="Şifre">
+
+    <div class="butonlar">
+        <button onclick="kayitOl()">Kayıt Ol</button>
+        <button onclick="girisYap()">Giriş Yap</button>
+    </div>
+
+    <p id="sonuc"></p>
+
+</div>
+
+<!-- ANA SOHBET EKRANI -->
+<div id="sohbetEkrani" class="sohbet-ekrani gizli">
+
+    <div class="ust-bar">
+        <div>
+            <h2>IRC WebRTC Sohbet Sistemi</h2>
+            <p>Giriş yapan kullanıcı: <strong id="aktifKullanici"></strong></p>
+        </div>
+
+        <button onclick="cikisYap()" class="cikis-btn">Çıkış Yap</button>
+    </div>
+
+    <div class="ana-grid">
+
+        <!-- SOL: ODA LİSTESİ -->
+        <aside class="panel">
+            <h3>Odalar</h3>
+
+            <ul id="odaListesi">
+    <li>Odalar yükleniyor...</li>
+</ul>
+
+<div class="oda-olustur-panel">
+    <h4>Yeni Oda</h4>
+    <input id="yeniOdaAdi" type="text" placeholder="Örn: proje2">
+    <button onclick="odaOlustur()">Oda Oluştur</button>
+    <button onclick="odadanAyril()" class="ayril-btn">Odadan Ayrıl</button>
+</div>
+        </aside>
+
+        <!-- ORTA: MESAJLAR -->
+        <main class="panel mesaj-panel">
+            <h3 id="aktifOdaBaslik">#genel</h3>
+
+            <div id="mesajAlani" class="mesaj-alani">
+                <div class="sistem-mesaji">#genel odasına katıldınız.</div>
+            </div>
+
+            <div class="emoji-panel">
+                <button onclick="emojiEkle('😀')">😀</button>
+                <button onclick="emojiEkle('😂')">😂</button>
+                <button onclick="emojiEkle('❤️')">❤️</button>
+                <button onclick="emojiEkle('👍')">👍</button>
+                <button onclick="emojiEkle('🔥')">🔥</button>
+                <button onclick="emojiEkle('👏')">👏</button>
+            </div>
+
+            <div class="mesaj-gonder">
+                <input id="mesajKutusu" type="text" placeholder="Mesaj yaz...">
+                <button onclick="mesajGonder()">Gönder</button>
+            </div>
+            <div class="webrtc-panel">
+                <h3>Görüntülü Görüşme</h3>
+                <p id="gorusmeDurumu" class="gorusme-durumu">Görüşme durumu: Hazır</p>
+
+                <div class="webrtc-butonlar">
+                    <button onclick="kamerayiAc()">Kamerayı Aç</button>
+                    <button id="mikrofonBtn" onclick="mikrofonAcKapat()">Mikrofonu Kapat</button>
+                    <button onclick="gorusmeBaslat()">Görüşme Başlat</button>
+                    <button onclick="gorusmeBitir()" class="danger">Görüşmeyi Bitir</button>
+                </div>
+
+                <div class="video-grid">
+                    <div>
+                        <p>Ben</p>
+                        <video id="kendiVideo" autoplay playsinline muted></video>
+                    </div>
+
+                    <div>
+                        <p>Misafir</p>
+                        <video id="uzakVideo" autoplay playsinline></video>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- SAĞ: KULLANICILAR -->
+        <aside class="panel">
+            <h3>Çevrim İçi Kullanıcılar</h3>
+
+            <div class="profil-panel">
+                <div id="profilPlaceholder" class="profil-placeholder">👤</div>
+            </div>
+            
+
+            <ul id="kullaniciListesi">
+                <li>Henüz yüklenmedi</li>
+            </ul>
+
+            <div class="ozel-mesaj-panel">
+                <h4>Özel Mesaj</h4>
+
+                <p>Seçilen kullanıcı: <strong id="ozelMesajHedefi">Yok</strong></p>
+
+                <div class="emoji-panel">
+                    <button onclick="emojiEkleOzel('😀')">😀</button>
+                    <button onclick="emojiEkleOzel('😂')">😂</button>
+                    <button onclick="emojiEkleOzel('❤️')">❤️</button>
+                    <button onclick="emojiEkleOzel('👍')">👍</button>
+                </div>
+
+                <input id="ozelMesajKutusu" type="text" placeholder="Özel mesaj yaz...">
+
+                <button onclick="ozelMesajGonder()">Özel Mesaj Gönder</button>
+            </div>
+
+        </aside>
+
+    </div>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

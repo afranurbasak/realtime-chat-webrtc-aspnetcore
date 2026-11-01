@@ -1,0 +1,449 @@
+:root {
+    --bg1: #0f0c29;
+    --bg2: #302b63;
+    --bg3: #24243e;
+
+    --kart: rgba(20, 18, 40, 0.78);
+    --kart2: rgba(255, 255, 255, 0.06);
+    --kart-border: rgba(255, 255, 255, 0.1);
+
+    --text: #f3f4f6;
+    --text-soft: #c4b5fd;
+
+    --ana1: #7c3aed;
+    --ana2: #a855f7;
+
+    --yesil1: #22c55e;
+    --yesil2: #16a34a;
+
+    --kirmizi1: #ef4444;
+    --kirmizi2: #dc2626;
+
+    --sari: #facc15;
+
+    --golge: 0 20px 50px rgba(0, 0, 0, 0.38);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    color: var(--text);
+    background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+    min-height: 100vh;
+}
+
+.gizli {
+    display: none !important;
+}
+
+/* GİRİŞ */
+.auth-kutu {
+    background: rgba(20, 18, 40, 0.9);
+    color: var(--text);
+    width: 500px;
+    padding: 60px 50px;
+    border-radius: 24px;
+    border: 1px solid var(--kart-border);
+    box-shadow: var(--golge);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.auth-kutu h1 {
+    text-align: center;
+    margin-bottom: 42px;
+    font-size: 52px;
+}
+
+.auth-kutu input {
+    width: 100%;
+    padding: 22px;
+    margin-top: 16px;
+    font-size: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+}
+
+.auth-kutu input::placeholder {
+    color: #cbd5e1;
+}
+
+.butonlar {
+    display: flex;
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.butonlar button {
+    flex: 1;
+    padding: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 17px;
+    color: white;
+    background: linear-gradient(135deg, var(--ana1), var(--ana2));
+}
+
+#sonuc {
+    text-align: center;
+    margin-top: 16px;
+    font-weight: bold;
+    color: var(--sari);
+}
+
+/* ANA EKRAN */
+.sohbet-ekrani {
+    min-height: 100vh;
+    padding: 22px;
+    background:
+        radial-gradient(circle at top left, rgba(168,85,247,0.28), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(250,204,21,0.08), transparent 28%),
+        linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+}
+
+.ust-bar {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--kart-border);
+    backdrop-filter: blur(18px);
+    border-radius: 24px;
+    padding: 22px 26px;
+    margin-bottom: 20px;
+    box-shadow: var(--golge);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ust-bar h2 {
+    margin: 0;
+    font-size: 27px;
+    color: white;
+}
+
+.ust-bar p {
+    margin: 6px 0 0;
+    color: var(--text-soft);
+}
+
+.cikis-btn {
+    background: linear-gradient(135deg, var(--kirmizi1), var(--kirmizi2));
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* GRID */
+.ana-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr 310px;
+    gap: 18px;
+}
+
+.panel {
+    background: rgba(255,255,255,0.06);
+    color: white;
+    border: 1px solid var(--kart-border);
+    backdrop-filter: blur(18px);
+    border-radius: 24px;
+    padding: 18px;
+    min-height: 560px;
+    box-shadow: var(--golge);
+}
+
+.panel h3 {
+    margin-top: 0;
+}
+
+/* ODALAR VE KULLANICILAR */
+#odaListesi,
+#kullaniciListesi {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#odaListesi li,
+#kullaniciListesi li {
+    padding: 12px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    color: white;
+}
+
+#odaListesi li {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#odaListesi li:hover,
+#kullaniciListesi li:hover {
+    background: rgba(168,85,247,0.35);
+}
+
+/* ODA / ÖZEL MESAJ */
+.oda-olustur-panel,
+.ozel-mesaj-panel {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.oda-olustur-panel input,
+.ozel-mesaj-panel input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 9px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 11px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+}
+
+.oda-olustur-panel input::placeholder,
+.ozel-mesaj-panel input::placeholder,
+#mesajKutusu::placeholder {
+    color: #cbd5e1;
+}
+
+.oda-olustur-panel button,
+.ozel-mesaj-panel button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, var(--ana1), var(--ana2));
+}
+
+.ayril-btn {
+    background: linear-gradient(135deg, var(--kirmizi1), var(--kirmizi2)) !important;
+}
+
+/* MESAJ */
+.mesaj-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.mesaj-alani {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 14px;
+    overflow-y: auto;
+    min-height: 380px;
+    max-height: 520px;
+}
+
+.sistem-mesaji {
+    color: #c4b5fd;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.mesaj {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 12px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+}
+
+.mesaj strong {
+    color: var(--sari);
+}
+
+.mesaj .saat {
+    float: right;
+    color: #cbd5e1;
+    font-size: 12px;
+}
+
+.mesaj p {
+    margin: 7px 0 0;
+}
+
+.ozel-mesaj {
+    background: rgba(250, 204, 21, 0.16);
+    border: 1px solid rgba(250, 204, 21, 0.7);
+}
+
+/* MESAJ GÖNDER */
+.mesaj-gonder {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.mesaj-gonder input {
+    flex: 1;
+    padding: 13px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+}
+
+.mesaj-gonder button {
+    padding: 13px 22px;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--yesil1), var(--yesil2));
+    color: white;
+    font-weight: bold;
+}
+
+/* EMOJİ */
+.emoji-panel {
+    display: flex;
+    gap: 7px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.emoji-panel button {
+    border: none;
+    background: rgba(255,255,255,0.08);
+    padding: 8px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.emoji-panel button:hover {
+    background: rgba(250,204,21,0.22);
+}
+
+/* WEBRTC */
+.webrtc-panel {
+    margin-top: 16px;
+    padding: 18px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.gorusme-durumu {
+    background: rgba(14,165,233,0.18);
+    color: #bae6fd;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin: 8px 0 12px;
+}
+
+.webrtc-butonlar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.webrtc-butonlar button {
+    padding: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--ana1), var(--ana2));
+    color: white;
+    font-weight: bold;
+}
+
+.webrtc-butonlar .danger {
+    background: linear-gradient(135deg, var(--kirmizi1), var(--kirmizi2));
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.video-grid video {
+    width: 100%;
+    height: 420px;
+    background: black;
+    border-radius: 18px;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.14);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1150px) {
+    .ana-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panel {
+        min-height: auto;
+    }
+
+    .webrtc-butonlar {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.profil-panel {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.profil-resmi {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(250,204,21,0.7);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.profil-placeholder {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(250,204,21,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.profil-alani{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.profil-kullanici{
+    font-size:24px;
+    font-weight:800;
+    color:#facc15;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
